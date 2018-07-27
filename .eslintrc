@@ -1,0 +1,17 @@
+{
+	"parser": "babel-eslint",
+	"parserOptions": {
+		"ecmaVersion": 8,
+		"sourceType": "module",
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"plugins": [
+		"react"
+	],
+	"rules": {
+		"semi": 0,
+		"indent": ["error", 4]
+	}
+}
