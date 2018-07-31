@@ -1,0 +1,96 @@
+@import "../../static/css/theme";
+
+.homeSec{
+    padding-bottom: 1rem;
+    .carousel{
+        height: 3.76rem;
+        border: 1px solid #eee;
+        background: url("./images/fmd_wap_home_bg_banner@2x.png") no-repeat;
+        background-size: 100%;
+    }
+    .notice{
+        width: 6rem;
+        height: 0.7rem;
+        text-align: center;
+        padding: 0.15rem 0.2rem;
+        margin: -0.35rem auto 0;
+        background: url("./images/fmd_wap_home_bg_notice@2x.png") no-repeat;
+        background-size: 100%;
+        position: relative;
+        ul{
+
+            li{
+                height: 0.4rem;
+                line-height: 0.4rem;
+            }
+        }
+
+    }
+    .platform-intro{
+        width: 6rem;
+        height: 2rem;
+        margin: 0.2rem auto;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .intro-item{
+            width: 1.4rem;
+            height: 1.4rem;
+        }
+    }
+    .novice{
+        width: 6.94rem;
+        margin: 0 auto;
+        text-align: center;
+        .title{
+            width: 5rem;
+            height: 0.35rem;
+            text-align: center;
+            background: url("./images/fmd_wap_home_line_left@2x.png")no-repeat center left, url("./images/fmd_wap_home_line_right@2x.png")no-repeat center right;
+            background-size: 1.5rem;
+            display: inline-block;
+            font-size: 0.32rem;
+            color: $black;
+        }
+        .cont{
+            margin-top: 0.3rem;
+            width: 100%;
+            height: 4.36rem;
+            background: url('./images/fmd_wap_home_bg_newproject@2x.png') no-repeat;
+            background-size: 100%;
+            padding: 0.3rem;
+
+            .name{
+                font-size: 0.36rem;
+                line-height: 0.6rem;
+                span{
+                    color: $danger;
+                }
+            }
+            .prj-info{
+                margin-top: 0.2rem;
+            }
+            .value{
+                height: 0.8rem;
+                color: $reverse;
+                font-size: 0.72rem;
+                margin: 0.3rem 0 0.2rem;
+                span{
+                    font-size: 0.48rem;
+                }
+            }
+            p{
+
+            }
+            .btn{
+                margin-top: 0.3rem;
+            }
+        }
+    }
+    .tips{
+        color: $primary;
+        text-align: center;
+        margin: 0.3rem 0;
+        opacity: 0.4;
+    }
+}

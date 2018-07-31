@@ -1,0 +1,68 @@
+@import "../../static/css/theme.scss";
+
+.yg-navigator{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 1rem;
+    background: $bg-color;
+    box-shadow:4px 0 20px rgba(50,50,50,0.1);
+    z-index: 99;
+
+    a{
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+        color: $gray;
+        i{
+            width: 0.58rem;
+            height: 0.58rem;
+            background-size: 100%;
+            &.home{
+                background-image: url("./images/fmd_wap_home_toolbbar_ic_home_disable@2x.png");
+            }
+            &.invest{
+                background-image: url("./images/fmd_wap_home_toolbar_ic_financial_disable@2x.png");
+            }
+            &.activity{
+                background-image: url("./images/fmd_wap_home_toolbar_ic_activity_disable@2x.png");
+            }
+            &.person{
+                background-image: url("./images/fmd_wap_home_toolbar_ic_personal_disable@2x.png");
+            }
+        }
+        p{
+            line-height: 1;
+            margin-bottom: 0;
+            font-size: 0.24rem;
+            margin-top:0.06rem;
+        }
+        &.active{
+            color: $primary;
+            i{
+                &.home{
+                    background-image: url("./images/fmd_wap_home_toolbar_ic_home_normal@2x.png");
+                }
+                &.invest{
+                    background-image: url("./images/fmd_wap_home_toolbar_ic_financial_normal@2x.png");
+                }
+                &.activity{
+                    background-image: url("./images/fmd_wap_home_toolbar_ic_activity_normal@2x.png");
+                }
+                &.person{
+                    background-image: url("./images/fmd_wap_home_toolbar_ic_personal_normal@2x.png");
+                }
+            }
+        }
+    }
+
+
+
+
+}

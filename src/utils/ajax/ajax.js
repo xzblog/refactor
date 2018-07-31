@@ -1,5 +1,3 @@
-// import {Toast} from 'antd-mobile';  //此处需要换成自己的Toast，自己的Toast有bug,待解决
-
 
 class Ajax {
     _init = function (config) {
@@ -79,7 +77,7 @@ class Ajax {
         const config = {
             method: 'POST',
             url: url,
-            data:data,
+            data: data,
         };
         return this._init(config);
     };

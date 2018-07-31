@@ -7,6 +7,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader'; // react热更新模块
 import App from './router';
+import 'static/css/common.scss';
 
 // 开启热更新
 if (module.hot) {

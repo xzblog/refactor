@@ -7,7 +7,7 @@ const path = require('path');
 const merge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');                     // 添加浏览器前缀
 const common = require('./webpack.config.common.js');
-const {server} = require('./config');
+const {client} = require('./config');
 
 module.exports = merge(common, {
 
@@ -60,8 +60,8 @@ module.exports = merge(common, {
 
 	devServer: {
 		open: true,   // 自动打开浏览器
-		port: server.port, // 端口
-		host: server.host, // 外部ip
+		port: client.port, // 端口
+		host: client.host, // 外部ip
 		compress: true,       //启用压缩
 		publicPath: '/',
 		// stats: "errors-only",  // 只显示错误信息
@@ -72,6 +72,6 @@ module.exports = merge(common, {
 			// warnings: true,
 			errors: true
 		},
-		proxy: server.proxy   // 代理
+		proxy: client.proxy   // 代理
 	},
 });

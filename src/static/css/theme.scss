@@ -1,22 +1,32 @@
 /*主题*/
 
-//主色调
-//$primary : #409EFF;
-$primary : #fe652f;
+// 背景色
+$bg-color: #fffcf3;
 
-//警告色
-$danger : #F56C6C;
+//主色调
+$primary : #b79045;
+
+// 主色调-淡一点
+$primary-darker: darken($primary, 20%) !default;
 
 // 反色
-$reverse: #4e5586;
+$reverse: #fd622f;
+//警告色
+$danger : #dc0010;
+
+
+
+
+// 黑色 字体主要颜色
+$black: #343537;
 
 //灰色
-$gray: #909399;
+$gray: #ccc;
 
 
 
 //圆角
-$radius  : 6px;
+$radius  : 2px;
 
 
 

@@ -7,9 +7,8 @@
 	box-sizing: border-box;
 }
 body{
-	background:#f8f9fa;
-	font-size: 0.14rem;
-	//max-width: 1024px;
+	background: $bg-color;
+	font-size: 0.24rem;
 	min-width: 320px;
 	margin: 0 auto;
 }
@@ -23,16 +22,12 @@ a{
 img{
 	max-width: 100%;
 }
-.container{
-	padding: 0.5rem 0;
+
+.red{
+    color: $reverse;
 }
-.flex{
-	padding: 0 0.1rem;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-}
+
+
 .link{
 	display: block;
 	height: 0.48rem;
@@ -50,12 +45,7 @@ img{
 	align-items: center;
 	justify-content: center;
 }
-.my-btn{
-    width: 3rem;
-    height: 0.4rem;
-	line-height: calc(0.4rem - 2px);
-	font-size: 0.15rem;
-}
+
 .mask{
     width: 100%;
     height: 100%;
@@ -65,6 +55,27 @@ img{
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 99;
 }
+
+.btn{
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    &.small{
+        width: 1.66rem;
+        height: 0.62rem;
+        line-height: 0.62rem;
+        background: url("../images/fmd_wap_home_ic_confirm@2x.png") no-repeat;
+        background-size: 100%;
+        .disabled{
+            background: url("../images/fmd_wap_home_ic_confirm_disable@2x.png") no-repeat;
+            background-size: 100%;
+        }
+    }
+}
+
+
 
 
 

@@ -33,6 +33,7 @@ module.exports = {
 			utils: _resolve('../src/utils'),
 			static: _resolve('../src/static'),
 			components: _resolve('../src/components'),
+            api: _resolve('../src/api')
 		}
 	},
 	module: {

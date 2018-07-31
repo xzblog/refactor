@@ -13,5 +13,5 @@ trim_trailing_whitespace = true
 # Set default charset and 4 space indentation
 [*]
 charset = utf-8
-indent_style = tab
+indent_style = space
 indent_size = 4
