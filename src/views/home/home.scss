@@ -17,13 +17,13 @@
         background: url("./images/fmd_wap_home_bg_notice@2x.png") no-repeat;
         background-size: 100%;
         position: relative;
-        ul{
-
-            li{
-                height: 0.4rem;
+        .cont{
+            height: 0.4rem;
+            .item{
                 line-height: 0.4rem;
             }
         }
+
 
     }
     .platform-intro{

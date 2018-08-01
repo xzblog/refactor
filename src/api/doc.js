@@ -18,3 +18,15 @@ export function fetchBanner() {
 }
 
 
+/**
+ * 获取首页公告轮播
+ * @returns {AxiosPromise}
+ */
+export function fetchNotice(data) {
+    return request({
+        url: '/doc/docArticle/findScrollList',
+        method: 'post',
+        data: data
+    })
+}
+

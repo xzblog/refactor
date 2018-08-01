@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 
 import {Page, Navigator, Carousel} from "components";
 import {fetchIndexNovice} from "api/project";
-import {fetchBanner} from "api/doc";
+import {fetchBanner, fetchNotice} from "api/doc";
 import {cycleType, projectState} from 'utils/filter';
 
 import './home.scss';
@@ -17,15 +17,8 @@ import './home.scss';
 export default class Home extends Component{
     state = {
         novice: {},
-        bannerList: []
-    };
-
-    getNovice = ()=>{
-        fetchIndexNovice().then(res=>{
-            this.setState({
-                novice: res
-            })
-        })
+        bannerList: [],
+        notices: []
     };
 
     getBanner = () =>{
@@ -36,27 +29,54 @@ export default class Home extends Component{
         })
     };
 
+    getNotice = () =>{
+        fetchNotice({nid: 'platform_notice'}).then(res=>{
+            this.setState({
+                notices: res
+            })
+        })
+    };
+    getNovice = ()=>{
+        fetchIndexNovice().then(res=>{
+            this.setState({
+                novice: res
+            })
+        })
+    };
+
+
     componentDidMount(){
         this.getNovice();
         this.getBanner();
+        this.getNotice();
     }
     render(){
-        const { novice, bannerList } = this.state;
+        const { novice, bannerList, notices } = this.state;
         return(
             <Page title="首页">
                 <div className="homeSec">
                     <Carousel className="carousel" autoplay>
                         {
                             bannerList.map((item, i)=> {
-                                return <img src={item.imgPath} alt={item.title} />
+                                return <a key={i} href={item.href}><img  src={item.imgPath} alt={item.title} /></a>
                             })
                         }
                     </Carousel>
+
                     <div className="notice">
-                        <ul>
-                            <li>关于福满多平台的新闻公告</li>
-                        </ul>
+                        {   notices.length ?
+                            <Carousel className="cont" autoplay vertical speed={0.3} delay={3}>
+                                {
+                                    notices.map((item)=>{
+                                        return <div key={item.id} className="item">{item.title}</div>
+                                    })
+                                }
+                            </Carousel>
+                            :
+                            <div className="item" key='zwgg'>暂无公告</div>
+                        }
                     </div>
+
 
                     <div className="platform-intro">
                         <div className="intro-item"><img src={require("./images/fmd_wap_home_pic_safe@2x.png")} alt="安全"/> </div>
