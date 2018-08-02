@@ -1,0 +1,27 @@
+@import "../../static/css/theme";
+
+.formSec{
+    &.login{
+        padding: 2rem 0.75rem;
+        .btn{
+            margin-top: 1rem;
+        }
+    }
+
+    &.register{
+
+    }
+
+    .logo{
+        height: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 0.8rem;
+        margin-bottom: 1rem;
+    }
+
+
+
+
+}

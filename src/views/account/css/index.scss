@@ -1,0 +1,155 @@
+@import "../../../static/css/theme";
+
+.accountSec{
+    .account-top{
+        height: 1.6rem;
+        padding: 0.25rem 0.3rem 0.35rem;
+        display: flex;
+        justify-content: space-between;
+        .title{
+            font-size: 0.48rem;
+            color: #B79045;
+        }
+        .right-area{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            &-left{
+                text-align: right;
+                .user-name{
+                    font-size: 0.28rem;
+                    color: $black;
+                    margin-bottom: 0.1rem;
+                }
+                .user-setting{
+                    color: #aaa;
+                    font-size: 0.2rem;
+                    i{
+                        display: inline-block;
+                        width: 0.12rem;
+                        height: 0.12rem;
+                        background: url("../images/fmd_wap_prfile_ic_settingmore@2x.png") no-repeat;
+                        background-size: 100%;
+                        vertical-align: inherit;
+                        margin-left: 0.08rem;
+                    }
+                }
+            }
+            .user-avatar{
+                width: 0.88rem;
+                height: 0.88rem;
+                border-radius: 50%;
+                border: 1px solid #eee;
+                overflow: hidden;
+                margin-left: 0.3rem;
+                img{
+                    width: 100%;
+                }
+            }
+        }
+    }
+    .total-amount{
+        margin-top: 0.2rem;
+        text-align: center;
+        .value{
+            font-size: 0.6rem;
+            color: $reverse;
+        }
+        p{
+            color: #aaa;
+            font-size: 0.3rem;
+            margin-bottom: 0.2rem;
+        }
+    }
+    .user-amount{
+        margin-top: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .item{
+            width: 50%;
+            text-align: center;
+            .value{
+                color: $reverse;
+                font-size: 0.36rem;
+            }
+            p{
+                color: #aaa;
+                font-size: 0.3rem;
+                margin-bottom: 0.2rem;
+            }
+        }
+    }
+    .btn-area{
+        margin-top: 0.8rem;
+        margin-bottom: 0.6rem;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        .account-btn{
+            width: 2.25rem;
+            height: 0.83rem;
+            line-height: 0.83rem;
+            text-align: center;
+            color: #fff;
+            font-size: 0.32rem;
+        }
+        .recharge-btn{
+            background: url("../images/fmd_wap_profile_btn_recharge@2x.png") no-repeat;
+            background-size: 100% 100%;
+        }
+        .cash-btn{
+            background: url("../images/fmd_wap_profile_btn_withdrawal@2x.png") no-repeat;
+            background-size: 100% 100%;
+            color: #E70012;
+        }
+    }
+
+    .opacity-list{
+        width: 7rem;
+        height: 4.9rem;
+        margin: 0 auto;
+        background: url("../images/fmd_wap_profile_bg_setting@2x.png") no-repeat;
+        background-size: 100% 100%;
+        padding: 4px;
+
+        .opacity-item{
+            width: 50%;
+            height: 1.6rem;
+            float: left;
+            color: $black;
+            display: flex;
+            align-items: center;
+            padding-left: 0.8rem;
+            font-size: 0.3rem;
+            .icon{
+                width: 0.44rem;
+                height: 0.44rem;
+                margin-right: 0.2rem;
+                display: inline-block;
+                background-size: 100%;
+                background-repeat: no-repeat;
+                &.icon-welfare{
+                    background-image: url(../images/fmd_wap_profile_ic_myvoucher@2x.png);
+                }
+                &.icon-card{
+                    background-image: url(../images/fmd_wap_profile_ic_mybankcard@2x.png);
+                }
+                &.icon-calendar{
+                    background-image: url(../images/fmd_wap_profile_ic_calendar@2x.png);
+                }
+                &.icon-captialRecord{
+                    background-image: url(../images/fmd_wap_profile_ic_capitalrecord@2x.png);
+                }
+                &.icon-investRecord{
+                    background-image: url(../images/fmd_wap_profile_ic_investmentrecord@2x.png);
+                }
+                &.icon-msg{
+                    background-image: url(../images/fmd_wap_profile_ic_msg@2x.png);
+                }
+
+
+            }
+        }
+    }
+}

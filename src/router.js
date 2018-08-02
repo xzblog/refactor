@@ -3,10 +3,24 @@
  * @Author: Magical
  */
 
+// 首页
 import React, { Component } from 'react';
 import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import Home from './views/home/home';
 
+import Home from './views/home/index';
+
+// 投资相关
+import Invest from './views/invest/index';
+
+// 活动相关
+import Activity from './views/activity/index';
+
+// 个人中心
+import Account from './views/account/index';
+
+import Login from './views/forms/login';
+
+import Register from './views/forms/register'
 
 // 权限验证
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -35,6 +49,12 @@ export default class App extends Component {
             <BrowserRouter>
                 <Switch>
                     <Route exact path="/" component={Home} />
+                    <Route path="/invest" component={Invest} />
+                    <Route path="/activity" component={Activity} />
+                    <Route path="/account" component={Account} />
+
+                    <Route path="/login" component={Login} />
+                    <Route path="/register" component={Register} />
                 </Switch>
             </BrowserRouter>
         );

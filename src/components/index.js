@@ -12,4 +12,4 @@ export { default as Carousel } from './carousel/carousel';
 // export { default as Progress } from './progress/progress';
 // export { default as PullRefresh } from './pullRefresh/pullRefresh';
 // export { default as Toast } from './toast/toast';
-// export { default as Input } from './inputItem/input';
+export { default as Input } from './input/input';

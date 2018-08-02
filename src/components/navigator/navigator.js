@@ -27,7 +27,7 @@ export default class Navigator extends Component{
             },{
                 url:'/activity', icon:'activity', text:'活动'
             },{
-                url:'/person', icon:'person', text:'个人'
+                url:'/account', icon:'account', text:'个人'
             }
         ]};
     }

@@ -1,0 +1,28 @@
+.input-group{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: transparent;
+    vertical-align: middle;
+    overflow: hidden;
+
+    > label{
+        width: 0.8rem;
+        font-size: 0.15rem;
+        padding-right: 0.1rem;
+        flex-shrink: 0;
+    }
+    input{
+        height: 0.8rem;
+        width: 100%;
+        font-size: 0.3rem;
+        padding: 0 0.2rem;
+        border: 1px solid #ccc;
+        outline: none;
+        background: none;
+    }
+
+
+}
+
