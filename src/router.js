@@ -24,17 +24,17 @@ import Register from './views/forms/register'
 
 // 权限验证
 const PrivateRoute = ({ component: Component, ...rest }) => {
-    const code = localStorage.getItem('code');
+    const authToken = localStorage.getItem('authToken');    // 查询用户登录信息， 在登录成功后设置，  登录状态失效后清除
     return <Route
         {...rest}
         render={props =>
-            code === '0' ? (
+            authToken ? (
                 <Component {...props} />
             ) : (
                 <Redirect
                     to={{
                         pathname: "/login",
-                        state: props.location   //将原本跳转的页面带到登录页去，带登录成功之后在跳转回来
+                        state: props.location   //将原本跳转的页面带到登录页去，待登录成功之后再跳转回来
                     }}
                 />
             )
@@ -51,7 +51,8 @@ export default class App extends Component {
                     <Route exact path="/" component={Home} />
                     <Route path="/invest" component={Invest} />
                     <Route path="/activity" component={Activity} />
-                    <Route path="/account" component={Account} />
+
+                    <PrivateRoute path="/account" component={Account} />
 
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />

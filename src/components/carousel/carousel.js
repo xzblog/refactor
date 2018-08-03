@@ -140,6 +140,9 @@ export default class Carousel extends Component{
         count > 1 && this.autoPlay();  // 防止 当children是异步获取的时候，组件加载完成时拿到的children是空时不会自动轮播
 
     }
+    componentWillUnmount () {
+        clearInterval(this.timer)
+    }
 
     render() {
         const {speed, children, className, dots, loop, num, vertical } = this.props;

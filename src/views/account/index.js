@@ -6,28 +6,51 @@
 
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import { Navigator } from "components";
+import { Navigator, Toast } from "components";
 import { fetchAppAccountCenter } from 'api/user';
 import './css/index.scss';
 
 class Account extends Component{
     state = {
         userModel: {},
-        userAccountModel: {}
+        accountModel: {},
+        authModel: {}
     };
 
     getAccountCenterInfo(){
         fetchAppAccountCenter().then(res=> {
-            console.log(res)
+            this.setState({
+                userModel: res.userModel,
+                accountModel: res.userAccountModel,
+                authModel: res.userIdentify
+            })
         })
     }
+
+    handleClickTo = (url) =>{
+        const {authModel} = this.state;
+        if(authModel.realNameState !== '10'){
+            Toast.warning('请先实名');
+            return
+        }
+        if(authModel.payPwdState !== '10'){
+            Toast.warning('请先设置支付密码');
+            return
+        }
+        if(authModel.bindCardState !== '10'){
+            Toast.warning('请先绑卡');
+            return
+        }
+        this.props.history.push(url);
+    };
+
 
     componentDidMount(){
         this.getAccountCenterInfo();
     };
 
     render(){
-        const {userModel, userAccountModel} = this.state;
+        const {userModel, accountModel} = this.state;
         return(
             <div className="accountSec">
                 <div className='account-top'>
@@ -46,25 +69,25 @@ class Account extends Component{
                 </div>
                 <div className="total-amount">
                     <p>总资产(元)</p>
-                    <div className="value">{userAccountModel.netAssets || 0}</div>
+                    <div className="value">{accountModel.netAssets || 0}</div>
                 </div>
                 <div className="user-amount">
                     <div className="item usable-amount">
                         <p>可用余额(元)</p>
-                        <div className="value">{userAccountModel.usable || 0}</div>
+                        <div className="value">{accountModel.usable || 0}</div>
                     </div>
                     <div className="item usable-amount">
                         <p>累计收益(元)</p>
-                        <div className="value">{userAccountModel.interestSum || 0}</div>
+                        <div className="value">{accountModel.interestSum || 0}</div>
                     </div>
                 </div>
                 <div className="btn-area">
-                    <Link className="item" to="/account/cash" >
+                    <div className="item" onClick={() =>{this.handleClickTo('/account/cash')}} >
                         <div className="account-btn cash-btn">提现</div>
-                    </Link>
-                    <Link className="item" to="/account/recharge">
+                    </div>
+                    <div className="item" onClick={() =>{this.handleClickTo('/account/recharge')}}>
                         <div className="account-btn recharge-btn">充值</div>
-                    </Link>
+                    </div>
                 </div>
 
 

@@ -5,10 +5,11 @@
  */
 
 import React, {Component} from 'react';
-
-import { Input } from "components";
+import { Link } from 'react-router-dom';
+import {Input, Toast} from "components";
 
 import { login } from 'api/user';
+import T from 'utils/index'
 
 import './from.scss';
 
@@ -25,12 +26,29 @@ class Login extends Component{
     }
 
     handleClickLogin = () => {
-        console.log(this.state);
+        const { mobile, password } = this.state;
+        const userName = T.delSpace(mobile);
+
+        if(userName.length === 0 ) {
+            Toast.show('手机号不能为空')
+        }else if(userName.length < 11 ) {
+            Toast.show('手机号格式不对');
+        }
+
+        const data = {
+            userName: userName,
+            loginPwd: password
+        };
+
+
+        login(data).then(res=> {
+            localStorage.setItem('authToken', 'yg-user');
+            Toast.success('登录成功', 2000, ()=> {
+                this.props.history.push(this.props.location.state)
+            })
+        })
     };
 
-    componentDidMount(){
-
-    }
 
     render(){
         return(
@@ -53,6 +71,12 @@ class Login extends Component{
                     </div>
 
                     <div className="btn big" onClick={this.handleClickLogin}>登录</div>
+
+                    <div className="other">
+                        <Link to='/findPwd'>忘记密码</Link>
+                        <Link to='/register'>没有账号？ </Link>
+                    </div>
+
                 </div>
             </div>
         )

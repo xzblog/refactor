@@ -6,10 +6,39 @@
         .btn{
             margin-top: 1rem;
         }
+        .other{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.4rem;
+            a{
+                color: #aaa;
+            }
+        }
     }
 
     &.register{
+        padding: 1rem 0.75rem;
 
+        .code-btn{
+            width: 2.4rem;
+            height: 0.8rem;
+            line-height: 0.8rem;
+            text-align: center;
+            flex-shrink: 0;
+            margin-left: 0.2rem;
+
+        }
+
+        .btn{
+            margin-top: 1rem;
+        }
+        .other{
+            text-align: center;
+            margin-top: 0.4rem;
+            a{
+                color: #aaa;
+            }
+        }
     }
 
     .logo{

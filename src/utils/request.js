@@ -8,6 +8,8 @@ import axios from 'axios';
 import {JSEncrypt} from 'jsencrypt';
 import {server} from '../../config/config';
 
+import { Toast } from "components";
+
 
 /*需要加密的字段*/
 const encryptMapper = [
@@ -52,10 +54,12 @@ service.interceptors.response.use(
         const res = response.data;
         // code为非200是抛错
         if (res.code !== '200') {
-            console.log(res.msg);
             // 登录状态失效
             if(res.code === '403'){
+                localStorage.setItem('authToken' , '');   //登录状态失效时把本地的authToken设置为空， 不让用户查看需要登录的信息
                 alert('登录状态失效');
+            }else{
+                Toast.warning(res.msg);
             }
             return Promise.reject('error')
         } else {
@@ -63,7 +67,7 @@ service.interceptors.response.use(
         }
     },
     error => {
-        console.log('err' + error); // for debug
+        Toast.fail(error); // for debug
         // 网络级别的错误
         return Promise.reject(error)
     }
