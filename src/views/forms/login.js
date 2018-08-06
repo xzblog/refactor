@@ -43,8 +43,10 @@ class Login extends Component{
 
         login(data).then(res=> {
             localStorage.setItem('authToken', 'yg-user');
+            const oldUrl = this.props.location.state;
+            const url = oldUrl ? oldUrl : '/account';
             Toast.success('登录成功', 2000, ()=> {
-                this.props.history.push(this.props.location.state)
+                this.props.history.push(url)
             })
         })
     };

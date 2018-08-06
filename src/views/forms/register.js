@@ -8,13 +8,17 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import {Input, Toast, ImgCode, SmsCode} from "components";
 
-import {register} from 'api/user';
+import {register, checkMobile} from 'api/user';
 import T from 'utils/index'
 
 class Login extends Component{
     state = {
         mobile: '',
+        loginPwd: '',
+        reLoginPwd: '',
         imgCode: '',
+        smsCode: '',
+        inviteCode: '',
     };
 
     changeValue(key,val){
@@ -22,6 +26,17 @@ class Login extends Component{
             [key]:val
         })
     }
+
+    checkMobile(v) {
+        const mobile = T.delSpace(v);
+        if(mobile.length === 11){
+            checkMobile({mobile}).then(res=>{
+                if(!res){
+                    Toast.warning('手机号码已注册')
+                }
+            })
+        }
+    };
 
     handleClickRegister = () => {
         const { mobile, imgCode } = this.state;
@@ -47,8 +62,15 @@ class Login extends Component{
         })
     };
 
+    componentDidMount(){
+        const inviteCode = T.getQuery('inviteCode');
+        this.setState({
+            inviteCode
+        })
+    }
+
     render(){
-        const {mobile, imgCode, vCodeKey} = this.state;
+        const {mobile, imgCode, inviteCode} = this.state;
 
         return(
             <div className='formSec register'>
@@ -58,7 +80,7 @@ class Login extends Component{
                         <Input
                             type='mobile'
                             placeholder='手机号'
-                            onChange={(v)=>{this.changeValue('mobile',v)}}
+                            onChange={(v)=>{this.changeValue('mobile',v); this.checkMobile(v)}}
                         />
                     </div>
                     <div className="form-item">
@@ -66,7 +88,7 @@ class Login extends Component{
                             type="text"
                             placeholder='图形验证码'
                             maxLength={4}
-                            rightContent= {<span className='code-btn'><ImgCode /> </span>}
+                            rightContent= {<span className='code-btn'><ImgCode ref = 'imgCode'/> </span>}
                             onChange={(v)=>{this.changeValue('imgCode',v)}}
                         />
                     </div>
@@ -112,6 +134,7 @@ class Login extends Component{
                             type="text"
                             placeholder='请输入邀请码'
                             maxLength={4}
+                            defaultValue = {inviteCode}
                             onChange={(v)=>{this.changeValue('inviteCode',v)}}
                         />
                     </div>

@@ -54,7 +54,7 @@ export default class Input extends Component{
     };
 
     render(){
-        const {label, type, placeholder, disabled, maxLength, name, rightContent} = this.props;
+        const {label, type, placeholder, disabled, maxLength, name, defaultValue, rightContent} = this.props;
         return(
             <div className="input-group">
                 {label && <label>{label}</label>}
@@ -63,7 +63,7 @@ export default class Input extends Component{
                     name={name}
                     onChange={this.handleChange}
                     placeholder={placeholder}
-                    value={this.state.value}
+                    value={defaultValue ? defaultValue : this.state.value}
                     disabled={disabled}
                     maxLength={maxLength}
                 />

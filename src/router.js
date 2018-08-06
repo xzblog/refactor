@@ -22,6 +22,8 @@ import Login from './views/forms/login';
 
 import Register from './views/forms/register'
 
+import Load from '.views/load/load'
+
 // 权限验证
 const PrivateRoute = ({ component: Component, ...rest }) => {
     const authToken = localStorage.getItem('authToken');    // 查询用户登录信息， 在登录成功后设置，  登录状态失效后清除
@@ -51,6 +53,7 @@ export default class App extends Component {
                     <Route exact path="/" component={Home} />
                     <Route path="/invest" component={Invest} />
                     <Route path="/activity" component={Activity} />
+                    <Route path="/pullLoad" component={Load} />
 
                     <PrivateRoute path="/account" component={Account} />
 

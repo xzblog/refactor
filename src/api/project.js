@@ -17,4 +17,14 @@ export function fetchIndexNovice() {
     })
 }
 
-
+export function fetchProjectList() {
+    return request({
+        url: '/project/findAppPageList',
+        method: 'post',
+        data: {
+            prjSearch: '01',
+            pageNum: '1',
+            pageSize: '10'
+        }
+    })
+}

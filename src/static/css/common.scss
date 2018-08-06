@@ -109,6 +109,25 @@ img{
     }
 }
 
+// tab
+.tab-nav{
+
+    margin: 0.2rem 0;
+    display: flex;
+    align-items: center;
+
+    .tab-item{
+        width: 1.4rem;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        color: $primary;
+        text-align: center;
+        &.active{
+            background: url("../images/fmd_wap_financial_btn_selected@2x.png") no-repeat;
+            background-size: 100%;
+        }
+    }
+}
 
 
 

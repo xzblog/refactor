@@ -9,10 +9,6 @@ import ClassNames from 'classnames';
 import {fetchSmsCode} from 'api/common';
 
 export default class SmsCode extends Component{
-    constructor(props){
-        super(props);
-        console.log(props.parent);
-    }
     state = {
         disable: false,
         children: this.props.children
@@ -33,11 +29,12 @@ export default class SmsCode extends Component{
                         children: '重新发送',
                         disable: false,
                     });
-                    // 此处还需触发图片验证码点击事件， 重新获取图片验证码
+                    // 此处需要使用者手动在调用组件内的图片验证码组件上绑定一个叫 imgCode 的ref, 作为单独的组件使用， 不怎么科学。待优化
+                    parent.refs.imgCode.handleClick();
                     clearInterval(this.timer)
                 }else{
                     this.setState({
-                        children: `已发送${delayTime--}`,
+                        children: `已发送（${delayTime--}）`,
                     });
                 }
             },1000)
@@ -47,8 +44,8 @@ export default class SmsCode extends Component{
                 children: '重新发送',
                 disable: false
             });
-            // 此处还需触发图片验证码点击事件， 重新获取图片验证码
-            // parent.refs.imgCode.handleClick();
+            // 此处需要使用者手动在调用组件内的图片验证码组件上绑定一个叫 imgCode 的ref, 作为单独的组件使用， 不怎么科学。待优化
+            parent.refs.imgCode.handleClick();
         })
     };
 
