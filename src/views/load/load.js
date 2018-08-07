@@ -12,24 +12,37 @@ import {PullLoad} from "components";
 export default class Load extends Component{
     state = {
         pageSize: 20,
-        pageNum: 1
+        loadSuccess: false,
+        data: []
     };
 
-    genData() {
-        const dataArr = [];
+    pageNum = 1;
+
+    getData() {
+        const {pageSize, data} = this.state;
         for (let i = 0; i < pageSize; i++) {
-            dataArr.push(`第${i}行`);
+            data.push(`第${this.pageNum}页-第${i+1}条`);
         }
-        return dataArr;
+
+        setTimeout(()=>{
+            this.setState({
+                data: data,
+                loadSuccess: true,
+            });
+
+            this.pageNum++;
+        },2000)
     }
     componentDidMount(){
-        this.getData()
+        this.getData();
     }
     render(){
         return(
             <div>
-                <PullLoad>
-
+                <PullLoad loadSuccess={this.state.loadSuccess} callback={()=>{this.getData()}}>
+                    {this.state.data.map((item,i)=>{
+                        return <div key={i} >{item}</div>
+                    })}
                 </PullLoad>
             </div>
         )

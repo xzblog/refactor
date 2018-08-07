@@ -1,5 +1,11 @@
 .yg-pull-load{
-    position: relative;
+    position: absolute;
+    top: 2rem;
+    bottom: 1rem;
+    width: 100%;
+    height: auto;
+    //border: 1px solid;
+    overflow: auto;
     .tips{
         width: 100%;
         display: none;
@@ -7,16 +13,22 @@
         height: 0.8rem;
         font-size: 0.3rem;
         text-align: center;
-        //position: absolute;
-        //top: 0;
-        //left: 0;
+        position: absolute;
+        bottom: -0.8rem;
+        left: 0;
         &.show{
             display: block;
         }
     }
-    .content{
-        background-color: #fff;
-        //transition: transform 0.3s;
+    &-content{
+        //background-color: #fff;
 
+        //transition: transform 0.3s;
+        > div{
+            height: 0.8rem;
+            line-height: 0.8rem;
+            padding: 0 0.2rem;
+            border-bottom: 1px solid #eee;
+        }
     }
 }

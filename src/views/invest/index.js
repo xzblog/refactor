@@ -14,15 +14,28 @@ import './invest.scss';
 class Invest extends Component{
 
     state = {
-        projectList: []
+        projectList: [],
+        loadSuccess: false,
+        hasNextPage: 0
     };
 
+    pageNum = 1;
+
     getProjectList(){
-        fetchProjectList().then(res=>{
-            console.log(res)
+        const {projectList} = this.state;
+        const data = {
+            prjSearch: '01',
+            pageNum: this.pageNum,
+            pageSize: '10'
+        };
+        fetchProjectList(data).then(res=>{
+            console.log(res);
             this.setState({
-                projectList: res.list
-            })
+                projectList: projectList.concat(res.list),
+                loadSuccess: true,
+                hasNextPage: res.hasNextPage
+            });
+            this.pageNum++;
         })
     };
 
@@ -31,18 +44,20 @@ class Invest extends Component{
     }
 
     render(){
-        const {projectList} = this.state;
+        const {projectList, hasNextPage} = this.state;
         return(
             <div className="investSec">
-                <div className="title">投资</div>
-                <div className="tab-nav">
-                    <div className="tab-item active">全部</div>
-                    <div className="tab-item">新手</div>
-                    <div className="tab-item">普通</div>
+                <div className="invest-top">
+                    <div className="title">投资</div>
+                    <div className="tab-nav">
+                        <div className="tab-item active">全部</div>
+                        <div className="tab-item">新手</div>
+                        <div className="tab-item">普通</div>
+                    </div>
                 </div>
 
                 <div className="content">
-                    <PullLoad hasNextPage={true} >
+                    <PullLoad hasNextPage={hasNextPage} loadSuccess={this.state.loadSuccess} callback={()=>{this.getProjectList()}}>
                         {projectList.map((item, i)=>{
                             return <Project data={item} key={i} />
                         })}

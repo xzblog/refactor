@@ -22,7 +22,7 @@ import Login from './views/forms/login';
 
 import Register from './views/forms/register'
 
-import Load from '.views/load/load'
+import Load from './views/load/load'
 
 // 权限验证
 const PrivateRoute = ({ component: Component, ...rest }) => {
