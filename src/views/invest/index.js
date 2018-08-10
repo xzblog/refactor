@@ -14,29 +14,41 @@ import './invest.scss';
 class Invest extends Component{
 
     state = {
+        pageNum: 1,
+        hasNextPage: 0,
         projectList: [],
         loadSuccess: false,
-        hasNextPage: 0
+        tabList: [{id:'01', text:'全部'}, {id:'02', text:'新手'}, {id:'03', text:'普通'}],
+        tabIndex: '01'
     };
 
-    pageNum = 1;
 
-    getProjectList(){
-        const {projectList} = this.state;
+
+
+
+    getProjectList(type='01', page){
+        const {projectList, pageNum} = this.state;
         const data = {
-            prjSearch: '01',
-            pageNum: this.pageNum,
+            prjSearch: type,
+            pageNum: page ? page : pageNum,
             pageSize: '10'
         };
+
         fetchProjectList(data).then(res=>{
-            console.log(res);
             this.setState({
-                projectList: projectList.concat(res.list),
+                projectList: res.pageNum===1 ? res.list : projectList.concat(res.list),
                 loadSuccess: true,
-                hasNextPage: res.hasNextPage
+                hasNextPage: res.hasNextPage,
+                pageNum: res.pageNum+1
             });
-            this.pageNum++;
         })
+    };
+
+    handleClickTab = (type,)=>{
+        this.setState({
+            tabIndex: type
+        });
+        this.getProjectList(type, 1)
     };
 
     componentDidMount(){
@@ -44,23 +56,36 @@ class Invest extends Component{
     }
 
     render(){
-        const {projectList, hasNextPage} = this.state;
+        const {projectList, hasNextPage, tabList, tabIndex} = this.state;
         return(
             <div className="investSec">
                 <div className="invest-top">
                     <div className="title">投资</div>
                     <div className="tab-nav">
-                        <div className="tab-item active">全部</div>
-                        <div className="tab-item">新手</div>
-                        <div className="tab-item">普通</div>
+                        {
+                            tabList.map((item, i)=>{
+                                return <div
+                                    key={item.id}
+                                    className={`tab-item ${tabIndex===item.id ? 'active': null}`}
+                                    onClick={()=>{this.handleClickTab(item.id)}}
+                                >{item.text}</div>
+                            })
+                        }
                     </div>
                 </div>
 
                 <div className="content">
-                    <PullLoad hasNextPage={hasNextPage} loadSuccess={this.state.loadSuccess} callback={()=>{this.getProjectList()}}>
-                        {projectList.map((item, i)=>{
-                            return <Project data={item} key={i} />
-                        })}
+                    <PullLoad
+                        hasNextPage={hasNextPage}
+                        loadSuccess={this.state.loadSuccess}
+                        callback={()=>{this.getProjectList()}}
+                        style ={{top:'2rem', bottom: '1rem'}}
+                    >
+                        {
+                            projectList.map((item, i)=>{
+                                return <Project data={item} key={item.prjNo} />
+                            })
+                        }
                     </PullLoad>
                 </div>
 
